@@ -1,75 +1,84 @@
 from dash import html, dcc
+import dash_bootstrap_components as dbc
 
-def landing_page_layout():
-    """Creates the layout for the landing page."""
+def landing_page_layout() -> html.Div:
+    """
+    Creates the layout for the landing page with Bootstrap's Minty theme
+    
+    Returns:
+        html.Div: The landing page layout details/components in a div
+    """
     return html.Div([
-        html.H1("🪴 Welcome to the Plant-gorithm! 🪴"),
-        html.Hr(),
-        html.P("Answer the following questions, and we'll suggest houseplants that fit you and your space."),
-        html.Img(
-            src='/assets/plants2.jpg', 
-            alt='Housplants', 
-            style={ 
-                'height': '500px', 
-                'width': 'auto', 
-                'display': 'block',
-                # Left-aligned  
-                'margin-left': '0', 
-                'margin-right': 'auto',
-                'margin-top': '25px',   
-                'margin-bottom': '25px'
-            }
-        ),
-        html.Br(),
-        # Button triggers the form page
-        html.Button("Get Plant Suggestions", id='start-button', n_clicks=0,
-        style={ 
-                'padding': '8px 30px',   
-                'font-size': '18px',     
-                'cursor': 'pointer',     
-                'border-radius': '1px',   
-                'border': '3px solid black'
-            }
-        )
-        ],
-        style={ 
-           'background-color': '#adc96c',
-           'padding': '20px', 
+        html.Div([
+            # Header and brief description
+            html.H1("🪴 Welcome to the Plant-gorithm! 🪴", className = "display-4 text-center mb-4"),
+            html.P("Answer the following questions, and we'll suggest houseplants that fit you and your space", className="lead text-center"),
+            html.Hr(),
+            # Stock image and button
+            html.Img(
+                src='/assets/plants2.jpg',
+                alt='Houseplants',
+                className="img-fluid rounded mx-auto d-block my-4",
+                style={'maxHeight': '500px'}
+            ),
+            html.Br(),
+            dbc.Button(
+                "Get Plant Suggestions",
+                id='start-button',
+                n_clicks=0,
+                color="success",
+                size="lg" ,
+                className="d-block mx-auto mt-4"
+            )
+        ], 
+        className = "p-4"),
+    ],
+    # Style choices for the landing page - background color & thick border with round edges
+    className="border border-5 border-success rounded",
+    style={
+        'backgroundColor': '#e6f9ec', 
+        'minHeight': '100vh',
+        'padding': '1rem',
+        'margin': '0',
+        'boxSizing': 'border-box'
        })
 
-def form_page_layout():
-    """Creates the layout for the preferences form page."""
+def form_page_layout() -> html.Div:
+    """
+    Creates the layout for the preferences form page with Bootstrap's Minty theme
+    
+    Returns:
+        html.Div: The form page layout details/components/user preferences in a div
+    """
 
     # Form page layout with user preferences
     return html.Div([
-        html.H1("Enter Your Preferences"),
+        html.H1("Enter Your Preferences:", className="mb-4"),
         html.Br(),
-        
+
         # Sunlight Preference
-        html.Label("Choose how much sun your space gets:"),
-        html.Img(
-            src='/assets/Sunlight.png', 
-            alt='Sunlight Map', 
-            style={ 
-                'height': '250px', 
-                'width': 'auto', 
-                'display': 'block',
-                # Left-aligned
-                'margin-left': '0',   
-                'margin-right': 'auto',
-                'margin-top': '25px',   
-                'margin-bottom': '25px'
-            }
+        html.Label("How much sun does your space get?"),
+        html.Br(),
+        html.Br(),
+
+        # ArcGIS Pro map - InstantApp format
+        html.Iframe(
+            src="https://wm-gis.maps.arcgis.com/apps/instant/basic/index.html?appid=39b2ee93a246491f9274e379dd8f98ad",
+            width="100%",
+            height="500",
+            style={"border": "2px solid #28a745", "borderRadius": "10px", "marginBottom": "20px"}
         ),
-        dcc.RadioItems(
+        
+        dbc.RadioItems( 
             id='sunlight',
             options=[
-                # Values match 'light' column in data 
                 {'label': 'Strong Light', 'value': 'Strong Light'},
-                {'label': 'Full Sun', 'value': 'Full Sun'} # Add more if needed
+                {'label': 'Full Sun', 'value': 'Full Sun'}
             ],
-            value='Strong Light', # Default value
-            labelStyle={'display': 'block'}
+            value='Strong Light',
+            # Centered to align with map and other text
+            inline=True,
+            className="justify-content-center mb-3"
         ),
         html.Br(),
 
@@ -78,27 +87,31 @@ def form_page_layout():
         dcc.Dropdown(
             id='watering',
             options=[
-                # Values match 'water' column in data
                 {'label': 'Must Not Dry Between Waterings', 'value': 'Must Not Dry Between Waterings'},
                 {'label': 'Can Dry Between Waterings', 'value': 'Can Dry Between Waterings'},
                 {'label': 'Water When Half Dry', 'value': 'Water When Half Dry'},
                 {'label': 'Water Only When Dry', 'value': 'Water Only When Dry'}
             ],
-            value='Water When Half Dry', # Default value
-            clearable=False 
+            value='Water When Half Dry',
+            clearable=False,
+            className="mb-3",
+            style={'margin': '0 auto', 'width': '300px'}
         ),
         html.Br(),
 
+        # Max Size Preference
         html.Label("How Big Do You Want Your Plant to Get?"),
-        dcc.RadioItems(
+        dbc.RadioItems(
             id='max-size',
             options=[
                 {'label': 'Small (< 1 meter)', 'value': 'small'},
                 {'label': 'Medium (1 - 5 meters)', 'value': 'medium'},
-                {'label': 'Large (> 5 meters)', 'value': 'large'} 
+                {'label': 'Large (> 5 meter)', 'value': 'large'}
             ],
-            value='medium', # Default value
-            labelStyle={'display': 'block'}
+            value='medium',
+            className="mb-3 justify-content-center",
+            labelStyle={'display': 'block', 'textAlign': 'center'},
+            style={'display': 'flex', 'flexDirection': 'column', 'alignItems': 'center'}
         ),
         html.Br(),
 
@@ -107,15 +120,16 @@ def form_page_layout():
         dcc.Dropdown(
             id='rarity',
             options=[
-                 # Values match 'availability' column data
                 {'label': 'Regular', 'value': 'Regular'},
                 {'label': 'Seasonal', 'value': 'Seasonal'},
-                {'label': 'More or Less Rare', 'value': 'More or Less Rare'}, 
+                {'label': 'More or Less Rare', 'value': 'More or Less Rare'},
                 {'label': 'Sporadic', 'value': 'Sporadic'},
                 {'label': 'Rare', 'value': 'Rare'}
             ],
-            value='Regular', # Default value
-            clearable=False
+            value='Regular',
+            clearable=False,
+            className="mb-3",
+            style={'margin': '0 auto', 'width': '300px'}
         ),
         html.Br(),
 
@@ -124,40 +138,48 @@ def form_page_layout():
         dcc.Dropdown(
             id='appeal',
             options=[
-                # Values match 'appeal' column in data
                 {'label': 'Flower', 'value': 'Flower'},
                 {'label': 'Foliage', 'value': 'Foliage'},
                 {'label': 'Style', 'value': 'Style'},
-                {'label': 'Color', 'value': 'Color'}, 
-                {'label': 'Trunc', 'value': 'Trunc'}, 
+                {'label': 'Color', 'value': 'Color'},
+                {'label': 'Trunc', 'value': 'Trunc'},
                 {'label': 'Bearing', 'value': 'Bearing'},
-                {'label': 'Robustness', 'value': 'Robustness'} 
+                {'label': 'Robustness', 'value': 'Robustness'}
             ],
-            value='Foliage', # Default value
-            clearable=False
+            value='Foliage',
+            clearable=False,
+            className="mb-4",
+            style={'margin': '0 auto', 'width': '300px'}
         ),
         html.Br(),
 
-        # Button triggers the 'suggestions' callback 
-        html.Button('Get Suggestions', id='submit-button', n_clicks=0,
-        style={ 
-                'padding': '8px 30px',   
-                'font-size': '18px',     
-                'cursor': 'pointer',     
-                'border-radius': '1px',   
-                'border': '3px solid black'
-            }
+        # Button to submit preferences and filter plants
+        dbc.Button(
+            "Get Suggestions",
+            id='submit-button',
+            n_clicks=0,
+            color="primary", 
+            size="lg", 
+            className="mx-auto d-block mb-4"
         ),
+     
         html.Br(),
-        html.Hr(), # Separator before results
-        html.Div(id='results-container'),
+        html.Hr(), 
+        html.Div(id='results-container', className="mt-4"),
         html.Br(),
 
-        # Back to home link
-        dcc.Link('← Back to Home', href='/')
+        # Link to go back to the landing page
+        html.Div([
+            dcc.Link('← Back to Home', href='/', className="btn btn-link")
+        ], className="text-center")
     ],
-        style={
-           'background-color': '#adc96c',
-           'padding': '20px', 
-       })
+    className="border border-success border-5 rounded text-center",
 
+    # Style choices for the form page - background color & thick border with round edges
+    style={
+        'backgroundColor': '#e6f9ec',
+        'minHeight': '100vh',
+        'margin': '0',
+        'padding': '20px',
+        'boxSizing': 'border-box'
+       })
