@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc, Input, Output, State
 import dash_bootstrap_components as dbc
-from src.analysis import filter_plants, load_data
+from src.logic_analysis import filter_plants, load_data
 from src.components import landing_page_layout, form_page_layout
 
 # Creating the Dash app
@@ -8,12 +8,12 @@ app = Dash(
     __name__,
     external_stylesheets=[dbc.themes.MINTY],
     suppress_callback_exceptions=True,
-    # Prevents duplicate callbacks output errors
+    # Prevents duplicate callbacks being triggered
     prevent_initial_callbacks="initial_duplicate"
 )
 app.title = 'Plantgorithm'
 
-# Main layout structure (landing and form page)
+# Overall app layout (landing and form pages)
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     html.Div(id='landing-page', children=landing_page_layout()),
@@ -75,7 +75,7 @@ def go_to_form(n_clicks) -> str:
         str: URL path to the form page
     """
     if n_clicks and n_clicks > 0: # Check if button was clicked
-        return '/form'
+        return '/form' 
     return None 
 
 @app.callback(
@@ -119,14 +119,14 @@ def show_plant_suggestions(sunlight, watering, max_size, rarity, appeal) -> html
 
         # If the data frame is empty, there were no matches
         if filtered_df.empty:
-            return dbc.Alert("No matching plants found -- try changing your criteria!", color="warning")
+            return dbc.Alert("No matching plants found — try changing your criteria!", color="warning")
 
         results = []
         for _, row in filtered_df.iterrows():
-            # Using dbc.Card for better styling with Bootstrap
+            # Use dbc.Card for better styling with Bootstrap
             card = dbc.Card([
                 # Display Tropicopia images
-                dbc.CardImg(src=row.get('image', '/assets/placeholder.png'), top=True, style={'height':'200px', 'object-fit': 'cover'}), # Added style
+                dbc.CardImg(src=row.get('image', '/assets/placeholder.png'), top=True, style={'height':'200px', 'object-fit': 'cover'}),
                 dbc.CardBody([
                     # Plant care and origin information
                     html.H4(row.get('common_name', 'Unknown'), className='card-title'),
@@ -151,7 +151,7 @@ def show_plant_suggestions(sunlight, watering, max_size, rarity, appeal) -> html
         return dbc.Alert(f"Error loading data: {e}", color="danger")
     except Exception as e:
         # Raise an error if something goes wrong
-        print(f"Error during suggestion generation: {e}")
+        print(f"Error during plant suggestion generation: {e}")
         return dbc.Alert(f"An error occurred while generating suggestions: {e}", color="danger")
 
 # Run the app

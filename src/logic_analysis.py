@@ -12,7 +12,7 @@ def load_data() -> pd.DataFrame:
     Loads the data frame from data.py
 
     Returns:
-        pd.DataFrame: The plant data frame
+        pd.DataFrame: The plant data frame (df)
     """
     return df
 
@@ -27,12 +27,13 @@ def filter_plants(df: pd.DataFrame, preferences: dict) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The filtered data frame
     """
-    # Make a copy to avoid changing the original data frame
+    # First make a copy to avoid changing the original data frame
     df_filtered = df.copy()
 
     # Filter by 'light' data column
     if 'sunlight' in preferences and preferences['sunlight']:
         sunlight_preference = str(preferences['sunlight'])
+        # Ensure the column exists/is not empty
         df_filtered = df_filtered[df_filtered['light'].str.contains(sunlight_preference, case=False, na=False)]
     
     # Filter by 'water' data column

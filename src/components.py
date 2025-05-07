@@ -16,7 +16,7 @@ def landing_page_layout() -> html.Div:
             html.Hr(),
             # Stock image and button
             html.Img(
-                src='/assets/plants2.jpg',
+                src='/assets/Plants.jpg',
                 alt='Houseplants',
                 className="img-fluid rounded mx-auto d-block my-4",
                 style={'maxHeight': '500px'}
@@ -75,6 +75,7 @@ def form_page_layout() -> html.Div:
                 {'label': 'Strong Light', 'value': 'Strong Light'},
                 {'label': 'Full Sun', 'value': 'Full Sun'}
             ],
+            # Default value
             value='Strong Light',
             # Centered to align with map and other text
             inline=True,
@@ -115,7 +116,7 @@ def form_page_layout() -> html.Div:
         ),
         html.Br(),
 
-        # Rarity Preference
+        # Availability/Rarity Preference
         html.Label("How rare would you like your plant to be?"),
         dcc.Dropdown(
             id='rarity',
@@ -171,7 +172,7 @@ def form_page_layout() -> html.Div:
         # Link to go back to the landing page
         html.Div([
             dcc.Link('← Back to Home', href='/', className="btn btn-link")
-        ], className="text-center")
+        ],  className="text-center")
     ],
     className="border border-success border-5 rounded text-center",
 
