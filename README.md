@@ -6,6 +6,30 @@ Have you ever had a houseplant die within days of bringing it home, or did you s
  
 The following variables are used to filter our houseplant dataset:
 -Watering Frequency
--Light
+-Available Sunlight
 -Appeal
 -Maximum Height
+-Availability
+
+# Quick Start Guide:
+
+At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository.
+
+# Files Included:
+
+`src/`
+
+- components.py: Defines the structure of the landing and form pages, including Dash core and HTML components.
+
+- data.py: Contains code to read in the plantdata.xlsx Excel file.
+
+- filtering.py: Outlines logic to filter the dataframe according to the user's preferences.
+
+main.py: creates the dash app and returns a link to the user interface.
+
+---
+
+
+
+
+

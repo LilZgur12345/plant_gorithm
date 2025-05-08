@@ -116,7 +116,7 @@ def form_page_layout() -> html.Div:
         ),
         html.Br(),
 
-        # Availability/Rarity Preference
+        # Availability Preference
         html.Label("How rare would you like your plant to be?"),
         dcc.Dropdown(
             id='rarity',

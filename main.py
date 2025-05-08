@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc, Input, Output, State
 import dash_bootstrap_components as dbc
-from src.logic_analysis import filter_plants, load_data
+from src.filtering import filter_plants, load_data
 from src.components import landing_page_layout, form_page_layout
 
 # Creating the Dash app
@@ -90,7 +90,7 @@ def go_to_form(n_clicks) -> str:
     State('appeal', 'value'),
     prevent_initial_call=True # Don't run on initial load
 )
-def show_plant_suggestions(sunlight, watering, max_size, rarity, appeal) -> html.Div:
+def show_plant_suggestions(n_clicks, sunlight, watering, max_size, rarity, appeal) -> html.Div:
     """
     Generates houseplant suggestions based on the user's preferences
 
