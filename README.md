@@ -10,7 +10,7 @@ The following variables are used to filter our houseplant dataset:
 
 - Available Sunlight
 
-- ppeal
+- Appeal
 
 - Maximum Height
 
@@ -32,9 +32,7 @@ At this moment, the Dash app can only be hosted locally. To run the app on your 
 
 `assets/`
 
-- Plants.jpg: 
-
-- Sunlight.png: 
+- Plants.jpg: stock image of several houseplants.
 
 main.py: creates the dash app and returns a link to the user interface.
 
