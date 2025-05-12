@@ -34,6 +34,10 @@ At this moment, the Dash app can only be hosted locally. To run the app on your 
 
 - Plants.jpg: stock image of several houseplants.
 
+`writeup/`
+
+- DATA440_Writeup.pdf: the final writeup for this project.
+
 main.py: creates the dash app and returns a link to the user interface.
 
 ---
