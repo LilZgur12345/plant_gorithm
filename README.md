@@ -4,7 +4,7 @@ Have you ever had a houseplant die within days of bringing it home, or did you s
 
 # The Suggestion Algorithm
  
-The following variables are used to filter the houseplant dataset, which was sourced from [Kaggle] (https://www.kaggle.com/datasets/iottech/plant) and scraped from [Tropicopia Online] (www.tropicopia.com/house-plant/).
+The following variables are used to filter the houseplant dataset, which was sourced from [Kaggle](https://www.kaggle.com/datasets/iottech/plant) and scraped from [Tropicopia Online](www.tropicopia.com/house-plant/).
 
 - Watering Frequency
 
@@ -18,7 +18,7 @@ The following variables are used to filter the houseplant dataset, which was sou
 
 # Quick Start Guide:
 
-At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and download it as a zip file. The .py files can then run the code as normal.
+At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and download it as a zip file. The python files can then be ran as normal.
 
 # Files Included:
 
