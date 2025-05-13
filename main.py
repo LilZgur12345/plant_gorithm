@@ -35,7 +35,7 @@ def navigate_pages(pathname) -> tuple:
         pathname (str): The current URL path
 
     Returns:
-        tuple: The styles/display properties for the landing and form pages
+        tuple: The style/display properties for the landing and form pages
     """
     if pathname == '/form':
         return {'display': 'none'}, {'display': 'block'}
