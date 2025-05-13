@@ -20,7 +20,7 @@ The following variables are used to filter the houseplant dataset, which was sou
 
 # Quick Start Guide:
 
-At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and then download it as a ZIP file. The python files can then be run as normal with Visual Studio Code or from the terminal.
+At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and then download it as a ZIP file. The main.py file can then be run as normal with Visual Studio Code or from the terminal.
 
 # Files Included:
 
@@ -47,7 +47,7 @@ main.py: creates the dash app and returns a link to the user interface.
 
 ---
 
-
+This project is maintained using the [uv package manager](https://docs.astral.sh/uv/).
 
 
 
