@@ -4,7 +4,7 @@ Have you ever had a houseplant die within days of bringing it home, or did you s
 
 ![Housplants](assets/Plants2.jpg)
 
-# The Suggestion Algorithm
+# The Suggestion Algorithm:
  
 The following variables are used to filter the houseplant dataset, which was sourced from [Kaggle](https://www.kaggle.com/datasets/iottech/plant) and scraped from [Tropicopia Online](https://www.tropicopia.com). 
 
