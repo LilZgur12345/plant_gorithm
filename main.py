@@ -157,4 +157,3 @@ def show_plant_suggestions(n_clicks, sunlight, watering, max_size, rarity, appea
 # Run the app
 if __name__ == '__main__':
     app.run(debug=False)
-   
