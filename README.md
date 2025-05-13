@@ -32,9 +32,12 @@ At this moment, the Dash app can only be hosted locally. To run the app on your 
 
 - filtering.py: Outlines logic to filter the dataframe according to the user's preferences.
 
+- plantdata.xlsx: The Excel file dowloaded from Kaggle.
+
 `assets/`
 
-- Plants.jpg: stock image of several houseplants.
+- Plants.jpg: first stock image of several houseplants.
+- Plants2.jpg: second stock image of several houseplants.
 
 `writeup/`
 
