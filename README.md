@@ -18,7 +18,7 @@ The following variables are used to filter the houseplant dataset, which was sou
 
 # Quick Start Guide:
 
-At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and download it as a zip file. The python files can then be ran as normal.
+At this moment, the Dash app can only be hosted locally. To run the app on your device, first clone the GitHub repository and then download it as a zip file. The python files can then be run as normal with Visual Studio Code or from the terminal.
 
 # Files Included:
 
